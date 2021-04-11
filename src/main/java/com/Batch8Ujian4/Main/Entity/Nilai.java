@@ -14,12 +14,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "pertanyaan")
+@Table(name = "nilai")
 public class Nilai {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id_nilai;
-	private int nilai;
+	private long idNilai;
+	private String nilai;
 	
 }

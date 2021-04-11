@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -25,10 +26,20 @@ public class PlotMataKuliah {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id_plot_mata_kuliah;
+	private long idPlotMataKuliah;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idMataKuliah")
+	private MataKuliah mataKuliah;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idDosen")
+	private Dosen dosen;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idMahasiswa")
+	private Mahasiswa mahasiswa;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_plot_mata_kuliah", referencedColumnName = "id_plot_mata_kuliah")
+	@JoinColumn(name = "idPlotMataKuliah", referencedColumnName = "idPlotMataKuliah")
 	private List<Soal> listSoal = new ArrayList<Soal>();
 	
 }
